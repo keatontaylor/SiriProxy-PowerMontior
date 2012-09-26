@@ -9,9 +9,9 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
   end
 
   #capture thermostat status
-  listen_for(/power.*status/i) { show_power_usage }
-  listen_for(/power.*usage/i) { show_power_usage }
-  listen_for(/current.*power usage/i) { show_power_usage }
+  listen_for(/power.*status/i) { detailed_power_usage }
+  listen_for(/power.*usage/i) { detailed_power_usage }
+  listen_for(/current.*power usage/i) { detailed_power_usage }
   listen_for(/detailed.*power usage/i) { detailed_power_usage }
   
   def show_power_usage
