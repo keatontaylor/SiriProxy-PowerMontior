@@ -9,7 +9,7 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
   end
 
   #capture thermostat status
-  listen_for(/detailed.*power usage/i) { detailed_power_usage }
+  listen_for(/.*detailed power usage/i) { detailed_power_usage }
   listen_for(/power.*status/i) { show_power_usage }
   listen_for(/power.*usage/i) { show_power_usage }
   listen_for(/current.*power usage/i) { show_power_usage }
@@ -40,7 +40,9 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
        status = JSON.parse(page) rescue nil
 
        if status
-         say "#{status["totalwatts"]}  total watts, #{status["leg0"]} from leg zero, #{status["leg1"]} from leg one."      
+         say "#{status["totalwatts"]}  total watts." 
+         say "#{status["leg0"]} from leg zero."
+         say " #{status["leg1"]} from leg one."      
        else
          say "Sorry, I could not connect to the power monitoring system."
        end
