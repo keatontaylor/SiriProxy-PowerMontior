@@ -33,7 +33,7 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
   end
   
   def detailed_power_usage
-     say "Checking the current power usage."
+     say "Getting a detailed report of power usage."
 
      Thread.new {
        page = HTTParty.get("http://#{self.host}/").body rescue nil
