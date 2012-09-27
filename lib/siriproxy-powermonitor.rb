@@ -39,11 +39,15 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
      Thread.new {
        page = HTTParty.get("http://#{self.host}/").body rescue nil
        status = JSON.parse(page) rescue nil
+       
+       totalkW = status['totalwatts'].to_f() / 1000
+       leg0kW = status["leg0"].to_f() / 1000
+       leg1kW = status["leg1"].to_f() / 1000
 
        if status
-         say "#{status['totalwatts'].to_f().round(2).to_s()}  total kW." 
-         say "#{status["leg0"].to_f().round(2).to_s()} kW from leg zero."
-         say " #{status["leg1"].to_f().round(2).to_s()} kW from leg one."      
+         say "#{totalkW.round(2).to_s()}  total kW." 
+         say "#{leg0kW.round(2).to_s()} kW from leg zero."
+         say " #{leg1kW.round(2).to_s()} kW from leg one."      
        else
          say "Sorry, I could not connect to the power monitoring system."
        end
