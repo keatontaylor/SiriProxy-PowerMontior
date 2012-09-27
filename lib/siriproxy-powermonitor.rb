@@ -26,7 +26,7 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
     if status
       response = ask "#{ powerkW.round(2).to_s() } kW are currently in use. Would you like a full report?"
       if (response =~ /.*yes/i)
-        say "#{ powerkW.round(2).to_s() } total. /n #{leg0kW.round(2).to_s()} from leg zero /n #{leg1kW.round(2).to_s()} from leg one", spoken: "Here is your report."
+        say "#{ powerkW.round(2).to_s() } total. \n #{leg0kW.round(2).to_s()} from leg zero. \n #{leg1kW.round(2).to_s()} from leg one.", spoken: "Here is your report."
       else
         say "Okay."
       end
