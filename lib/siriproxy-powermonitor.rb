@@ -41,9 +41,9 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
        status = JSON.parse(page) rescue nil
 
        if status
-         say "#{status["totalwatts"]}  total watts." 
-         say "#{status["leg0"]} from leg zero."
-         say " #{status["leg1"]} from leg one."      
+         say "#{status['totalwatts'].to_f().round(2).to_s()}  total kW." 
+         say "#{status["leg0"].to_f().round(2).to_s()} kW from leg zero."
+         say " #{status["leg1"].to_f().round(2).to_s()} kW from leg one."      
        else
          say "Sorry, I could not connect to the power monitoring system."
        end
