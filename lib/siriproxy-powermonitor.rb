@@ -24,7 +24,7 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
     
       powerkW = Integer(status["totalwatts"]) / 1000
       if status
-        say "#{ powerkW } kW are currently in use."      
+        say "#{ powerkW.to_s() } kW are currently in use."      
       else
         say "Sorry, I could not connect to the power monitoring system."
       end
