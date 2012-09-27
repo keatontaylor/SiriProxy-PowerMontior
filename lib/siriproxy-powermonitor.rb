@@ -22,7 +22,7 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
       page = HTTParty.get("http://#{self.host}/").body rescue nil
       status = JSON.parse(page) rescue nil
     
-      powerkW = status['totalwatts'].to_f() / 1000
+      powerkW = status['totalwatts'].to_f().round(2) / 1000
       if status
         say "#{ powerkW.to_s() } kW are currently in use."      
       else
