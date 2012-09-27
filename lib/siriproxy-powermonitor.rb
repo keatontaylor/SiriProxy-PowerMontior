@@ -45,9 +45,9 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
        leg1kW = status["leg1"].to_f() / 1000
 
        if status
-         say "#{totalkW.round(2).to_s()} kW's total." 
-         say "#{leg0kW.round(2).to_s()} kW from leg zero."
-         say " #{leg1kW.round(2).to_s()} kW from leg one."      
+         say "#{totalkW.round(2).to_s()} kW total." 
+         say "#{leg0kW.round(2).to_s()} from leg zero."
+         say " #{leg1kW.round(2).to_s()} from leg one."      
        else
          say "Sorry, I could not connect to the power monitoring system."
        end
