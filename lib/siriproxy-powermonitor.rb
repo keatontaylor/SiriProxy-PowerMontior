@@ -22,7 +22,7 @@ class SiriProxy::Plugin::PowerMonitor < SiriProxy::Plugin
       page = HTTParty.get("http://#{self.host}/").body rescue nil
       status = JSON.parse(page) rescue nil
       if status
-        say "#{status["totalwatts"]} W are currently in use."      
+        say "#{ puts status["totalwatts"].to_i / 1000 } kW are currently in use."      
       else
         say "Sorry, I could not connect to the power monitoring system."
       end
